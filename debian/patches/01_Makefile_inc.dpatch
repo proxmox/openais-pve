@@ -1,0 +1,45 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 01_Makefile_patch.dpatch by  <root@lvm1.maurer-it.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: set correct paths
+
+@DPATCH@
+
+--- a/Makefile.inc.org	2009-03-31 04:52:36.000000000 -0400
++++ b/Makefile.inc	2009-03-31 04:54:20.000000000 -0400
+@@ -1,28 +1,11 @@
+ # Common options
+ PREFIX=/usr
+ DESTDIR=
+-LCRSODIR=$(PREFIX)/libexec/lcrso
++LCRSODIR=$(PREFIX)/lib/lcrso
+ 
+-ARCH=$(shell uname -p)
+-
+-ifeq (,$(findstring 64,$(ARCH)))
+-PRELIBDIR=$(PREFIX)/lib
+-else
+-PRELIBDIR=$(PREFIX)/lib64
+-endif
+-ifeq (s390,$(ARCH))
+-PRELIBDIR=$(PREFIX)/lib
+-endif
+-ifeq (s390x,$(ARCH))
+-PRELIBDIR=$(PREFIX)/lib64
+-endif
+-ifeq (ia64,$(ARCH))
+-PRELIBDIR=$(PREFIX)/lib
+-endif
+-
+-LIBDIR=$(PRELIBDIR)/openais
+-COROSYNCLIBDIR=$(PRELIBDIR)/corosync
+-PKGCONFIGDIR=$(PRELIBDIR)/pkgconfig
++LIBDIR=$(PREFIX)/lib
++COROSYNCLIBDIR=$(PREFIX)/lib
++PKGCONFIGDIR=$(PREFIX)/lib/pkgconfig
+
+ 
+
+# Do not modify below this line
+ 

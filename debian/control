@@ -1,0 +1,79 @@
+Source: openais-pve
+Priority: extra
+Maintainer: Proxmox Support Team <support@proxmox.com>
+Build-Depends: dpatch, debhelper (>> 5), libcorosync-pve-dev
+Standards-Version: 3.7.3
+Section: libs
+
+Package: openais-pve
+Section: admin
+Architecture: any
+Depends: corosync-pve (>= 0.97), libopenais3-pve (= ${binary:Version}), libcorosync4-pve
+Conflicts: openais
+Provides: openais
+Description: Standards-based cluster framework (daemon and modules)
+ The openais project is a project to implement a production quality
+ "Revised BSD" licensed implementation of the SA Forum's Application
+ Interface Specification. The project implements cutting edge research
+ on virtual synchrony to provide 100% correct operation in the face of
+ failures or partitionable networks with excellent performance
+ characteristics.
+ .
+ The Application Interface Specification is a software API and policies
+ which are used to develop applications that maintain service during
+ faults.
+ The API consists of Availability Management Framework (AMF) which
+ provides application failover, Cluster Membership (CLM),
+ Checkpointing (CKPT), Event (EVT), Messaging (MSG), and
+ Distributed Locks (DLOCK).
+ .
+ This package contains the openais modules.
+
+Package: libopenais3-pve
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}
+Conflicts: libopenais3
+Provides: libopenais3
+Description: Standards-based cluster framework (libraries)
+ The openais project is a project to implement a production quality
+ "Revised BSD" licensed implementation of the SA Forum's Application
+ Interface Specification. The project implements cutting edge research
+ on virtual synchrony to provide 100% correct operation in the face of
+ failures or partitionable networks with excellent performance
+ characteristics.
+ .
+ The Application Interface Specification is a software API and policies
+ which are used to develop applications that maintain service during
+ faults.
+ The API consists of Availability Management Framework (AMF) which
+ provides application failover, Cluster Membership (CLM),
+ Checkpointing (CKPT), Event (EVT), Messaging (MSG), and
+ Distributed Locks (DLOCK).
+ .
+ This package contains libraries that should be used by openais clients.
+
+Package: libopenais-pve-dev
+Section: libdevel
+Architecture: any
+Conflicts: libopenais-dev
+Provides: libopenais-dev
+Depends: libopenais3-pve (= ${binary:Version}), libcorosync-pve-dev
+Description: Standards-based cluster framework (developer files)
+ The openais project is a project to implement a production quality
+ "Revised BSD" licensed implementation of the SA Forum's Application
+ Interface Specification. The project implements cutting edge research
+ on virtual synchrony to provide 100% correct operation in the face of
+ failures or partitionable networks with excellent performance
+ characteristics.
+ .
+ The Application Interface Specification is a software API and policies
+ which are used to develop applications that maintain service during
+ faults.
+ The API consists of Availability Management Framework (AMF) which
+ provides application failover, Cluster Membership (CLM),
+ Checkpointing (CKPT), Event (EVT), Messaging (MSG), and
+ Distributed Locks (DLOCK).
+ .
+ This package contains header files required to build clients for the
+ openais infrastructure.

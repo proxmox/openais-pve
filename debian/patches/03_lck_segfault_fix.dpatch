@@ -1,0 +1,32 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 03_lck_segfault_fix.dpatch by  <root@lvm1.maurer-it.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: fix segmentation fault
+
+@DPATCH@
+
+--- a/services/lck.c	2009-04-02 03:55:56.000000000 -0400
++++ b/services/lck.c	2009-04-02 03:56:07.000000000 -0400
+@@ -1196,9 +1196,6 @@
+ 	struct resource_cleanup *resource_cleanup;
+ 	struct lck_pd *lck_pd = (struct lck_pd *)api->ipc_private_data_get (conn);
+ 
+-	/* DEBUG */
+-	log_printf (LOG_LEVEL_NOTICE, "[DEBUG]: resource_cleanup_remove { %s }\n",
+-		    get_mar_name_t (&resource_cleanup->name));
+ 
+ 	for (list = lck_pd->resource_cleanup_list.next;
+ 	     list != &lck_pd->resource_cleanup_list;
+@@ -1207,6 +1204,11 @@
+ 		resource_cleanup = list_entry (list, struct resource_cleanup, list);
+ 
+ 		if (resource_cleanup->resource_handle == resource_handle) {
++
++		        /* DEBUG */
++		        log_printf (LOG_LEVEL_NOTICE, "[DEBUG]: resource_cleanup_remove { %s }\n",
++				    get_mar_name_t (&resource_cleanup->name));
++
+ 			list_del (&resource_cleanup->list);
+ 			free (resource_cleanup);
+ 			return;

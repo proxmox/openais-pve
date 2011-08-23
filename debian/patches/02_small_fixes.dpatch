@@ -1,0 +1,19 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 02_SMALL_FIXES.dpatch by  <root@lvm1.maurer-it.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: A random patch
+
+@DPATCH@
+
+--- openais-0.94/test/Makefile.org	2009-04-01 10:31:55.000000000 -0400
++++ openais-0.94/test/Makefile	2009-04-01 10:33:00.000000000 -0400
+@@ -55,7 +55,7 @@
+ testckpt: testckpt.o sa_error.o
+ 	$(CC) $(LDFLAGS) -o testckpt testckpt.o $(LIBS)
+ 
+-ckptbench: ckptbench.o
++ckptbench: ckptbench.o sa_error.o
+ 	$(CC) $(LDFLAGS) -o ckptbench ckptbench.o $(LIBS)
+ 
+ testlck: testlck.o sa_error.o
