@@ -1,3 +1,9 @@
+openais-pve (1.1.4-2) unstable; urgency=low
+
+  * add package-config file to libopenais-pve-dev
+
+ -- Proxmox Support Team <support@proxmox.com>  Fri, 17 Feb 2012 08:33:13 +0100
+
 openais-pve (1.1.4-1) unstable; urgency=low
 
   * update to version 1.1.4

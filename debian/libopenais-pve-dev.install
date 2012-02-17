@@ -1,3 +1,4 @@
 usr/include
+usr/lib/pkgconfig/lib*.pc
 usr/lib/*.a
 usr/lib/*.so
