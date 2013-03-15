@@ -1,3 +1,9 @@
+openais-pve (1.1.4-3) unstable; urgency=low
+
+  * recompile for wheezy
+
+ -- Proxmox Support Team <support@proxmox.com>  Fri, 15 Mar 2013 06:53:09 +0100
+
 openais-pve (1.1.4-2) unstable; urgency=low
 
   * add package-config file to libopenais-pve-dev
