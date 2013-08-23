@@ -6,6 +6,7 @@ AISDIR=openais-${AISVERSION}
 AISSRC=openais-${AISVERSION}.orig.tar.gz
 
 ARCH:=$(shell dpkg-architecture -qDEB_BUILD_ARCH)
+GITVERSION:=$(shell cat .git/refs/heads/master)
 
 DEBS=									\
 	openais-pve_${AISVERSION}-${AISRELEASE}_${ARCH}.deb 		\
@@ -19,6 +20,7 @@ ${DEBS}: ${AISSRC}
 	rm -rf ${AISDIR}
 	tar xf ${AISSRC} 
 	cp -av debian ${AISDIR}/debian
+	echo "git clone git://git.proxmox.com/git/openais-pve.git\\ngit checkout ${GITVERSION}" > ${AISDIR}/debian/SOURCE
 	cd ${AISDIR}; dpkg-buildpackage -rfakeroot -b -us -uc
 
 download:
